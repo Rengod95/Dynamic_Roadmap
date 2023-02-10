@@ -55,6 +55,11 @@ export const useSecurity = function <TValues, TErrors extends Errors = Errors>({
     })();
   }, [valid, values]);
 
+  if (useErrorBoundary && !valid) {
+    const [message] = Object.values(errors);
+    throw new Error(message as string);
+  }
+
   return {
     values,
     valid,
