@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding:0;
+  outline:0;
+  appearance:none;
+  border:0;
+  text-decoration:none;
+  list-style: none;
+  box-sizing: border-box;
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+}
+
+body {
+  font-family: 'Montserrat', 'GmarketSansMedium' ,sans-serif;
+  line-height: 1.7;
+  width: 100vw;
+  height: 100vh;
+  user-select: none;
+  overflow-y: scroll;
+  padding-top: 64px;
+  background-color: #242e54;;
+  color: rgba(255,255, 255, 0.7);
+}
+
+  
+  ol, ul {
+    list-style: none;
+  }
+  
+  blockquote, q {
+    quotes: none;
+  }
+  
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none;
+  }
+  
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
