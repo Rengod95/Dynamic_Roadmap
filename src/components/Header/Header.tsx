@@ -1,13 +1,14 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import React from 'react';
+import createFlexBox, { FlexBox } from '../commonUI/FlexBox/FlexBoxCreator';
 
-interface NavItem {
+interface NavItemData {
   title: string;
   url: string;
 }
 
-const NAV_SET: Array<NavItem> = [
+const NAV_ITEM_DATAS: Array<NavItemData> = [
   { title: '커뮤니티', url: '/board/post' },
   { title: '로드맵 게시판', url: '/board/roadmap' },
   { title: '개인 페이지', url: '/member' },
@@ -15,27 +16,23 @@ const NAV_SET: Array<NavItem> = [
 
 const Header = () => {
   return (
-    <Container>
-      <Layout>
-        <MenuLayout>
-          {NAV_SET.map((item: NavItem) => (
+    <HeaderContainer>
+      <ContainerLayout>
+        <NavContainer>
+          {NAV_ITEM_DATAS.map((item: NavItemData) => (
             <NavItem key={item.url}>
               <StyledLink href={item.url}>{item.title}</StyledLink>
             </NavItem>
           ))}
-        </MenuLayout>
-      </Layout>
-    </Container>
+        </NavContainer>
+      </ContainerLayout>
+    </HeaderContainer>
   );
 };
 
 export default Header;
 
-const Container = styled.header`
-  ${(props) => {
-    return `
-      `;
-  }}
+const HeaderContainer = styled.header`
   width: 100%;
   height: 64px;
   position: fixed;
@@ -48,7 +45,7 @@ const Container = styled.header`
   top: 0;
 `;
 
-const Layout = styled.nav`
+const ContainerLayout = styled.nav`
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 1fr;
@@ -57,20 +54,15 @@ const Layout = styled.nav`
   margin: 0 auto;
 `;
 
-const MenuLayout = styled.ul`
-  display: flex;
-  align-items: center;
+const NavContainer = styled(createFlexBox('ul'))`
   justify-content: flex-end;
   height: 100%;
 `;
 
-const NavItem = styled.li`
+const NavItem = styled(createFlexBox('li'))`
   min-width: 100px;
   height: inherit;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-decoration: none;
   padding: 0 10px;
   transition: all 400ms ease;
@@ -78,15 +70,12 @@ const NavItem = styled.li`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(createFlexBox(Link))`
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
   height: inherit;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   transition: all 400ms ease;
   &:hover {
     color: #00bf8e;
