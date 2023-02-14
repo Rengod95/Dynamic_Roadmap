@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 
 type mainAxisDirection = 'row' | 'column';
@@ -18,7 +19,7 @@ const DEFAULT_MAIN_AXIS_ITEM_POS = 'center';
 const DEFAULT_SUB_AXIS_ITEM_POS_ONE_LINE = 'center';
 const DEFAULT_SUB_AXIS_ITEM_POS = 'stretch';
 
-const createFlexBox = (
+export const createFlexBox = (
   element: any,
   mainAxisDirection?: mainAxisDirection,
   useOneLine?: useOneLine,
@@ -39,7 +40,5 @@ const createFlexBox = (
     }}
   `;
 };
-
-export const FlexBox = createFlexBox('div');
 
 export default createFlexBox;

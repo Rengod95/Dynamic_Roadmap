@@ -1,7 +1,14 @@
+import { PostList, PostListNav } from '@/components/Post';
 import React from 'react';
 
 const Post = () => {
-  return <div> post</div>;
+  return (
+    <main>
+      <section>
+        <PostList></PostList>
+      </section>
+    </main>
+  );
 };
 
 export default Post;

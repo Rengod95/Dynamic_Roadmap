@@ -30,6 +30,7 @@ export type SecurityResult<TValues> = {
   errors?: Errors;
   reset: () => void;
 };
+
 export const useSecurity = function <TValues, TErrors extends Errors = Errors>({
   values,
   validate,

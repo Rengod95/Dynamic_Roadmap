@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
-import Link from 'next/link';
+import styled, { StyledComponent } from '@emotion/styled';
+import Link, { LinkProps } from 'next/link';
 import React from 'react';
-import createFlexBox, { FlexBox } from '../commonUI/FlexBox/FlexBoxCreator';
+import { FlexListItem, FlexListItemProps, createFlexBox } from '../FlexElement';
 
 interface NavItemData {
   title: string;
@@ -17,15 +17,15 @@ const NAV_ITEM_DATAS: Array<NavItemData> = [
 const Header = () => {
   return (
     <HeaderContainer>
-      <ContainerLayout>
-        <NavContainer>
+      <HeaderNav>
+        <NavItemList>
           {NAV_ITEM_DATAS.map((item: NavItemData) => (
-            <NavItem key={item.url}>
+            <NavListItem key={item.url}>
               <StyledLink href={item.url}>{item.title}</StyledLink>
-            </NavItem>
+            </NavListItem>
           ))}
-        </NavContainer>
-      </ContainerLayout>
+        </NavItemList>
+      </HeaderNav>
     </HeaderContainer>
   );
 };
@@ -45,7 +45,7 @@ const HeaderContainer = styled.header`
   top: 0;
 `;
 
-const ContainerLayout = styled.nav`
+const HeaderNav = styled.nav`
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 1fr;
@@ -54,12 +54,12 @@ const ContainerLayout = styled.nav`
   margin: 0 auto;
 `;
 
-const NavContainer = styled(createFlexBox('ul'))`
+const NavItemList = styled(createFlexBox('ul'))`
   justify-content: flex-end;
   height: 100%;
 `;
 
-const NavItem = styled(createFlexBox('li'))`
+const NavListItem: StyledComponent<FlexListItemProps> = styled(FlexListItem)`
   min-width: 100px;
   height: inherit;
   cursor: pointer;
