@@ -1,14 +1,14 @@
-import React, { LiHTMLAttributes, ReactNode } from 'react';
-import createFlexBox from './FlexBoxCreator';
+import React, { LiHTMLAttributes } from 'react';
+import FlexBoxCreator from './flex.util';
 import styled from '@emotion/styled';
 import { log } from 'console';
 
 export interface FlexListItemProps extends LiHTMLAttributes<HTMLLIElement> {}
 
 export const FlexListItem = ({ children, ...args }: FlexListItemProps) => {
-  console.log(args);
+  // console.log(args);
 
   return <FlexLi {...args}>{children}</FlexLi>;
 };
 
-const FlexLi = createFlexBox('li');
+const FlexLi = FlexBoxCreator.createDefaultFlexBox('li');

@@ -1,7 +1,7 @@
 import styled, { StyledComponent } from '@emotion/styled';
 import Link, { LinkProps } from 'next/link';
 import React from 'react';
-import { FlexListItem, FlexListItemProps, createFlexBox } from '../FlexElement';
+import { FlexListItem, FlexListItemProps, FlexBoxCreator } from '../../layout/FlexBox';
 
 interface NavItemData {
   title: string;
@@ -54,7 +54,7 @@ const HeaderNav = styled.nav`
   margin: 0 auto;
 `;
 
-const NavItemList = styled(createFlexBox('ul'))`
+const NavItemList = styled(FlexBoxCreator.createDefaultFlexBox('ul'))`
   justify-content: flex-end;
   height: 100%;
 `;
@@ -70,7 +70,7 @@ const NavListItem: StyledComponent<FlexListItemProps> = styled(FlexListItem)`
   }
 `;
 
-const StyledLink = styled(createFlexBox(Link))`
+const StyledLink = styled(FlexBoxCreator.createDefaultFlexBox(Link))`
   color: #fff;
   font-size: 1rem;
   cursor: pointer;

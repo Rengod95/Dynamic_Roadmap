@@ -1,3 +1,3 @@
 export * from './PostListNav';
 export * from './PostList';
-export * from './Post';
+export * from './PostDetail';

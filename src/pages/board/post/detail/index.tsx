@@ -4,9 +4,7 @@ import React from 'react';
 const Post = () => {
   return (
     <main>
-      <section>
-        <PostList></PostList>
-      </section>
+      <section></section>
     </main>
   );
 };

@@ -1,5 +1,5 @@
-import Footer from './Footer/Footer';
-import Header from './Header/Header';
+import Footer from './commons/Footer/Footer';
+import Header from './commons/Header/Header';
 
 //UI
 export { Footer, Header };
