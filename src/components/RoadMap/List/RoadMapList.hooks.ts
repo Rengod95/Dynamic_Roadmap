@@ -12,11 +12,11 @@ export type RoadMapListResponse = {
 
 // TODO: update api path
 // TODO: add proxy for path /api
-export const roadMapsUrl = '/api/roadmap';
-export const getRoadMaps = async () => {
-  const { roadMapList } = await request<RoadMapListResponse>(roadMapsUrl);
+export const roadMapListUrl = '/api/roadmap';
+export const getRoadMapList = async () => {
+  const { roadMapList } = await request<RoadMapListResponse>(roadMapListUrl);
   return roadMapList;
 };
 
 export const useRoadMapList = (options?: QueryOptions<RoadMap[]>) =>
-  useQuery<RoadMap[]>(['roadMap'], getRoadMaps, options);
+  useQuery<RoadMap[]>(['roadMap'], getRoadMapList, options);
