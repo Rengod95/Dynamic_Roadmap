@@ -4,7 +4,7 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 
 export type RoadMapPageProps = {};
 
-export const RoadMapPage = ({}: RoadMapPageProps) => {
+const RoadMapPage = ({}: RoadMapPageProps) => {
   // TODO: concrete component
   return <RoadMapList />;
 };
@@ -18,3 +18,5 @@ export const getServerSideProps: GetServerSideProps = async () => {
     },
   };
 };
+
+export default RoadMapPage;

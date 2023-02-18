@@ -8,7 +8,9 @@ export const RoadMapList = ({}: RoadMapListProps) => {
   return (
     <Root>
       {roadMapList.map((roadMap) => (
-        <RoadMapListItem {...roadMap} key={roadMap.id} />
+        <li key={roadMap.id}>
+          <RoadMapListItem {...roadMap} />
+        </li>
       ))}
     </Root>
   );
