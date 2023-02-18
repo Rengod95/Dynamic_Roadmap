@@ -6,13 +6,17 @@ export type RoadMap = {
   id: number;
 };
 
-export type RoadMapsResponse = {
+export type RoadMapListResponse = {
   roadMapList: RoadMap[];
 };
 
-export const roadMapsUrl = '';
-export const getRoadMaps = () => request(roadMapsUrl);
+// TODO: update api path
+// TODO: add proxy for path /api
+export const roadMapsUrl = '/api/roadmap';
+export const getRoadMaps = async () => {
+  const { roadMapList } = await request<RoadMapListResponse>(roadMapsUrl);
+  return roadMapList;
+};
 
-// TODO: update to exact type
-export const useRoadMaps = (options?: QueryOptions<RoadMap[]>) =>
+export const useRoadMapList = (options?: QueryOptions<RoadMap[]>) =>
   useQuery<RoadMap[]>(['roadMap'], getRoadMaps, options);
