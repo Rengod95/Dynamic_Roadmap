@@ -21,7 +21,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({ size, variant, onClick, title, disabled, children }: ButtonProps) => {
   return (
-    <StyledButton onClick={onClick} disabled={disabled} size={size} variant={variant}>
+    <StyledButton {...props}>
       {title && <span>title</span>}
       {children}
     </StyledButton>
