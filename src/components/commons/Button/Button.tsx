@@ -1,6 +1,4 @@
-import React, { ButtonHTMLAttributes, ReactNode, useCallback, useState } from 'react';
-import { FlexBoxCreator } from '../../layout/FlexBox';
-import styled from '@emotion/styled';
+import React, { ButtonHTMLAttributes } from 'react';
 import {
   ButtonColor,
   ButtonColorPreset,
@@ -9,17 +7,14 @@ import {
   getButtonColor,
   getButtonSize,
 } from '.';
+import { StyledButton } from './Button.css';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export type ButtonProps = {
   size: ButtonSizePreset | ButtonSize;
   variant: ButtonColorPreset | ButtonColor;
-  onClick?: (...args: any) => any;
-  title?: string | undefined;
-  disabled?: boolean;
-  children?: ReactNode;
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button = ({ size, variant, onClick, title, disabled, children }: ButtonProps) => {
+export const Button = ({ size, variant, onClick, title, disabled, children }: ButtonProps) => {
   return (
     <StyledButton onClick={onClick} disabled={disabled} size={size} variant={variant}>
       {title && <span>title</span>}
@@ -27,17 +22,3 @@ const Button = ({ size, variant, onClick, title, disabled, children }: ButtonPro
     </StyledButton>
   );
 };
-
-const StyledButton = styled(FlexBoxCreator.createDefaultFlexBox('button'))`
-  ${({ size, variant }: ButtonProps) => {
-    const colorStyle = getButtonColor(variant);
-    const sizeStyle = getButtonSize(size);
-
-    return `
-    ${colorStyle}
-    ${sizeStyle}
-  `;
-  }}
-`;
-
-export default Button;

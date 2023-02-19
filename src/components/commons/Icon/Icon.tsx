@@ -16,7 +16,7 @@ export interface IconProps {
   color?: string;
 }
 
-const SVGIcon = ({ size, viewBoxSize, iconName, color, ...args }: IconProps) => {
+export const SVGIcon = ({ size, viewBoxSize, iconName, color, ...args }: IconProps) => {
   //viewPortSize
   const {
     minX,

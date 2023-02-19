@@ -6,7 +6,7 @@ import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 //common layout
 import { Header, Footer } from '@/components';
-import '@/styles/common.scss';
+import '@/styles/common.css';
 import React from 'react';
 
 export default function App({ Component, pageProps }: AppProps) {

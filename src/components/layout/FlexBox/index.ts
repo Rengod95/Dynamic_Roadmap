@@ -1,2 +1,2 @@
 export * from './FlexListItem';
-export * from './flex.util';
+export * from './Flex.util';

@@ -1,4 +1,4 @@
-import { ViewPortObject, ViewBoxObject, ViewBoxString } from './icon.type';
+import { ViewPortObject, ViewBoxObject, ViewBoxString } from '.';
 import { ICON_SET, IconName, ViewPortSize, ViewBoxSize, IconData } from '.';
 
 const DEFAULT_VIEW_PORT_SIZE: ViewPortObject = { width: 100, height: 100 };
