@@ -7,14 +7,14 @@ export type BootstrapProps = {
   pageProps: AppProps['pageProps'];
 };
 
+(async () => {
+  if(process.env.APPLICATION_PHASE === 'LOCAL' || 'DEVELOPMENT') {
+    await import ('@/mocks');
+  }
+})();
+
 export const Bootstrap = ({ children, pageProps }: BootstrapProps) => {
   const [queryClient] = useState(() => new QueryClient({}));
-
-  (async () => {
-    if(process.env.APPLICATION_PHASE === 'LOCAL' || 'DEVELOPMENT') {
-     await import ('@/mocks');
-    }
-  })();
 
   return (
     <QueryClientProvider client={queryClient}>

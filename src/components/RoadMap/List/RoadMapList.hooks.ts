@@ -11,7 +11,6 @@ export type RoadMapListResponse = {
 };
 
 // TODO: update api path
-// TODO: add proxy for path /api
 export const roadMapListUrl = '/api/roadmap';
 export const getRoadMapList = async () => {
   const { roadMapList } = await request<RoadMapListResponse>(roadMapListUrl);
