@@ -1,33 +1,13 @@
 import { rest } from 'msw';
+import { roadMapList } from '@/mocks/RoadMap.mock';
+import { roadMapListUrl } from '@/components/RoadMap/List';
 
-export const handlers = [
-  rest.get('/api/roadmap', (req, res, ctx) =>
-    res(
-      ctx.json({
-        roadMapList: [
-          {
-            id: 1,
-          },
-          {
-            id: 2,
-          },
-          {
-            id: 3,
-          },
-          {
-            id: 4,
-          },
-          {
-            id: 5,
-          },
-          {
-            id: 6,
-          },
-          {
-            id: 7,
-          },
-        ],
-      })
-    )
-  ),
-];
+export const getRoadMapList = rest.get(roadMapListUrl, (req, res, ctx) =>
+  res(
+    ctx.json({
+      roadMapList,
+    })
+  )
+);
+
+export const handlers = [getRoadMapList];
