@@ -4,11 +4,11 @@ const nextConfig = {
   rewrites: () => {
     return [
       {
-        source: "/api",
-        destination: "https://localhost:5000",
+        source: '/api',
+        destination: 'https://localhost:5000',
       },
     ];
-  }
-}
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
