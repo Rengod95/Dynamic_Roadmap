@@ -9,6 +9,13 @@ export type BootstrapProps = {
 
 export const Bootstrap = ({ children, pageProps }: BootstrapProps) => {
   const [queryClient] = useState(() => new QueryClient({}));
+
+  (async () => {
+    if(process.env.APPLICATION_PHASE === 'LOCAL' || 'DEVELOPMENT') {
+     await import ('@/mocks');
+    }
+  })();
+
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>{children}</Hydrate>
