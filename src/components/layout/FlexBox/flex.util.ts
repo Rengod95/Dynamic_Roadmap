@@ -13,6 +13,7 @@ type subAxisItemPosOneline =
 type subAxisItemPos = 'flex-start' | 'center' | 'flex-end' | 'stretch';
 
 interface FlexConfig {
+  //컴포넌트 만들기
   element: any;
   mainAxisDirection?: mainAxisDirection;
   useOneLine?: useOneLine;

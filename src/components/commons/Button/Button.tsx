@@ -7,18 +7,13 @@ import {
   getButtonColor,
   getButtonSize,
 } from '.';
-import { StyledButton } from './Button.css';
+import * as S from './Button.css';
 
 export type ButtonProps = {
   size: ButtonSizePreset | ButtonSize;
   variant: ButtonColorPreset | ButtonColor;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Button = ({ size, variant, onClick, title, disabled, children }: ButtonProps) => {
-  return (
-    <StyledButton {...props}>
-      {title && <span>title</span>}
-      {children}
-    </StyledButton>
-  );
+export const Button = ({ size, variant, children, ...props }: ButtonProps) => {
+  return <S.Button {...props}>{children}</S.Button>;
 };

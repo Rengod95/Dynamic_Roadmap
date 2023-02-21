@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Root, PostListItem, PostItemList, getPostAsync, useInfinitePost } from '.';
+import { getPostAsync, useInfinitePost } from '.';
+import * as S from './PostList.css';
 import { QueryClient, dehydrate } from '@tanstack/react-query';
 import { GetServerSideProps } from 'next';
 import { GET_POST_QUERY_KEY } from '.';
@@ -16,13 +17,13 @@ export const PostList = (props: PostListProps) => {
   // const {} = data;
 
   return (
-    <Root>
-      <PostItemList>
+    <S.Root>
+      <S.PostItemList>
         {isLoading && <p>Loading user data...</p>}
         {isError && <p>Error fetching user data: {error?.message && '에러'}</p>}
         {data && <div>data</div>}
-      </PostItemList>
-    </Root>
+      </S.PostItemList>
+    </S.Root>
   );
 };
 
