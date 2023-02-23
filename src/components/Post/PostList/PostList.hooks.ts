@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useState } from 'react';
 
 export const GET_POST_QUERY_KEY = 'post-2';
 export const POSTS_ENDPOINT = 'https://dummyjson.com/posts';
@@ -19,12 +19,12 @@ export const getPostAsync = async (pageParam: number = 1): Promise<PostResponse>
 
 export const usePosts = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
-  const [maxPageNumber, setMaxPageNumber] = useState<number>(0);
 
   const { data, error, status } = useQuery<PostResponse, Error>(
     [GET_POST_QUERY_KEY, currentPageNumber],
     () => getPostAsync(currentPageNumber)
   );
+  const maxPageNumber: number = data ? data.total / DEFAULT_POST_ITEM_LIMIT : 0;
 
   const callNextPage = useCallback(() => {
     setCurrentPageNumber((currentPageNumber) => currentPageNumber + 1);
@@ -33,10 +33,6 @@ export const usePosts = () => {
   const callPreviousPage = useCallback(() => {
     setCurrentPageNumber((currentPageNumber) => currentPageNumber - 1);
   }, []);
-
-  useEffect(() => {
-    setMaxPageNumber((data?.total as number) / DEFAULT_POST_ITEM_LIMIT);
-  }, [data]);
 
   return {
     data,
