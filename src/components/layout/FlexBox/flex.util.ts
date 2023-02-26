@@ -14,28 +14,32 @@ export const getVariantStyle = (variant: FlexVariant): FlexStyleConfig => {
 
 export const getCustomStyleWithKeys = <K extends StyleConfigKeys>(
   config: FlexStyleConfig,
-  customStyle: CustomFlexStyleConfig
+  customStyle?: CustomFlexStyleConfig
 ): FlexStyleConfig => {
-  const totalConfig: {} & FlexStyleConfig = Object.assign({}, config);
+  const totalConfig: FlexStyleConfig = Object.assign({}, config);
 
-  for (const k in customStyle) {
-    const key = k as K;
-    if (customStyle[key] !== undefined) totalConfig[key] = customStyle[key]!!;
-    else totalConfig[key] = config[key];
+  if (customStyle) {
+    for (const k in customStyle) {
+      const key = k as K;
+      if (customStyle[key]) totalConfig[key] = customStyle[key]!!;
+    }
+
+    return totalConfig;
   }
 
-  return totalConfig;
+  return config;
 };
 
-export const StyleController = (variant: FlexVariant, customStyle: CustomFlexStyleConfig) => {
+export const StyleController = (variant: FlexVariant, customStyle?: CustomFlexStyleConfig) => {
   const config = getVariantStyle(variant);
   const style = getCustomStyleWithKeys(config, customStyle);
 
   return css`
-    flex-direction:${style.direction}
-    flex-wrap: ${style.wrap}
-    flex-grow: ${style.grow}
-    align-items: ${style.align}
-    jusyify-content:${style.justify}
-  `.styles;
+    display: flex;
+    flex-direction: ${style?.direction};
+    flex-wrap: ${style?.wrap};
+    flex-grow: ${style?.grow};
+    align-items: ${style?.align};
+    justify-content: ${style?.justify};
+  `;
 };

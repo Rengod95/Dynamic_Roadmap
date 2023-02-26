@@ -8,8 +8,8 @@ export const DEFAULT_FLEX_BOX_PRESET: Record<FlexVariant, FlexStyleConfig> = {
     direction: 'row',
     wrap: DEFAULT_WRAP_CONFIG,
     grow: DEFAULT_GROW_CONFIG,
-    justify: 'center',
-    align: 'flex-start',
+    justify: 'flex-start',
+    align: 'center',
   },
   rowCenter: {
     direction: 'row',
@@ -22,8 +22,8 @@ export const DEFAULT_FLEX_BOX_PRESET: Record<FlexVariant, FlexStyleConfig> = {
     direction: 'row',
     wrap: DEFAULT_WRAP_CONFIG,
     grow: DEFAULT_GROW_CONFIG,
-    justify: 'center',
-    align: 'flex-end',
+    justify: 'flex-end',
+    align: 'center',
   },
   columnStart: {
     direction: 'column',
