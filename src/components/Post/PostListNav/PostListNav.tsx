@@ -6,7 +6,7 @@ import { SVGIcon } from '@/components/commons/Icon';
 export const PostListNav = () => {
   //컴포넌트 네이밍 차후 수정
   return (
-    <S.Root>
+    <S.Nav>
       <S.NavBody>
         <S.ItemContainer>
           <Button size={'none'} variant={'transparent'}>
@@ -22,6 +22,6 @@ export const PostListNav = () => {
           </Button>
         </S.ItemContainer>
       </S.NavBody>
-    </S.Root>
+    </S.Nav>
   );
 };
