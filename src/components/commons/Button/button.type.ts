@@ -1,5 +1,6 @@
 //preset type for user
 export type ButtonSizePreset = 'none' | 'small' | 'medium' | 'large';
+
 export type ButtonColorPreset =
   | 'default'
   | 'primary'
@@ -17,7 +18,7 @@ export interface ButtonSize {
   height: number;
   padding?: number;
   margin?: number;
-  fontSize?: number;
+  fontSize?: string;
 }
 
 //color type

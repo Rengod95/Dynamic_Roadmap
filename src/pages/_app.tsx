@@ -5,8 +5,10 @@ import { useState } from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 //common layout
-import { Header, Footer } from '@/components';
+import { Header } from '@/components/commons/Header';
+import { Footer } from '@/components/commons/Footer';
 import '@/styles/common.css';
+
 import React from 'react';
 
 export default function App({ Component, pageProps }: AppProps) {

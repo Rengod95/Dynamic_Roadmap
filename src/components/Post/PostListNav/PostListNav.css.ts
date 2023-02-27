@@ -14,8 +14,7 @@ export const ItemContainer = styled(FlexBoxCreator.createDefaultFlexBox('div'))`
   height: 100%;
 `;
 
-export const ItemList = styled(FlexBoxCreator.rowStartFlexBox('ul'))`
-  background-color: red;
+export const ItemList = styled(FlexBoxCreator.rowFlexBox('ul'))`
   width: 100%;
   height: 100%;
 `;

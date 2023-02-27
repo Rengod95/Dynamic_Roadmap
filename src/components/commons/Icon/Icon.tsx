@@ -36,7 +36,7 @@ export const SVGIcon = ({ size, viewBoxSize, iconName, color, ...args }: IconPro
       height={iconHeight}
       fill="none"
       viewBox={`${minX} ${minY} ${viewboxWidth} ${viewboxHeight}`}>
-      <path fill={color} d={icon_data.path} {...icon_data}></path>
+      <path fill={color} d={icon_data.path}></path>
     </svg>
   );
 };

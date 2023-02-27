@@ -35,6 +35,6 @@ export const setViewBoxSize = (size: ViewBoxSize, iconName: IconName): ViewBoxOb
 
 export const getIconData = (iconName: IconName): IconData => {
   const icon_data = ICON_SET[iconName];
-  console.log(icon_data);
+
   return icon_data;
 };

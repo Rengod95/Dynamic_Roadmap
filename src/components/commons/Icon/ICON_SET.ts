@@ -11,8 +11,8 @@ export interface IconData {
 
 export const ICON_SET: Record<IconName, IconData> = {
   arrowLeft: {
-    path: 'M4, 12L20, 12M4, 12L10, 6M4, 12L10, 18',
-    viewBoxSize: '0 0 16 16',
+    path: 'M604.7 759.2l61.8-61.8L481.1 512l185.4-185.4-61.8-61.8L357.5 512z',
+    viewBoxSize: '0 0 1024 1024',
   },
   heart: {
     path: 'M 10,30A 20,20 0,0,1 50,30A 20,20 0,0,1 90,30Q 90,60 50,90Q 10,60 10,30 z',
