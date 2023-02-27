@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { usePosts, getPostAsync, PostResponse } from '.';
+import { PostResponse } from '.';
 import * as S from './PostList.css';
-import { DefaultButton } from '@/components/commons/Button';
-import { SVGIcon } from '@/components/commons/Icon';
 
 export type PostListProps = {
   data: PostResponse | undefined;
@@ -10,8 +7,8 @@ export type PostListProps = {
 
 export const PostList = ({ data }: PostListProps) => {
   return (
-    <S.Root>
-      <S.PostItemList>
+    <S.Root flex="columnCenter">
+      <S.PostItemList flex="columnStart">
         {data?.posts.map((post) => {
           return (
             <div key={post.id}>

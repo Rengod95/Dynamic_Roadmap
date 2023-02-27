@@ -1,19 +1,17 @@
+import { Flex } from '@/components/layout/FlexBox';
 import styled from '@emotion/styled';
-import { FlexBoxCreator, FlexListItem } from '../../layout/FlexBox';
 
-export const Root = styled(FlexBoxCreator.columnStartFlexBox('section'))`
+export const Root = styled(Flex)`
   width: 1080px;
   min-height: 720px;
 `;
 
-export const PostItemList = styled(FlexBoxCreator.columnStartFlexBox('ul'))`
+export const PostItemList = styled(Flex)`
   width: 100%;
   height: 100%;
-  justify-content: space-between;
 `;
 
-export const PostListItem = styled(FlexListItem)`
+export const PostListItem = styled(Flex)`
   width: 100%;
   height: 60px;
-  flex-wrap: wrap;
 `;

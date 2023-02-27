@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import * as S from './PostListNav.css';
 import { SVGIcon } from '@/components/commons/Icon';
 import { DefaultButton } from '@/components/commons/Button';
@@ -19,8 +18,8 @@ export const PostListNav = ({ current, max, handler }: PostListNavProps) => {
 
   return (
     <S.Root>
-      <S.NavBody>
-        <S.ItemContainer>
+      <S.NavBody flex="rowStart">
+        <S.ItemList flex="rowCenter">
           <DefaultButton
             size={'medium'}
             variant={'transparent'}
@@ -28,13 +27,7 @@ export const PostListNav = ({ current, max, handler }: PostListNavProps) => {
             disabled={prevButtonDisabled}>
             <SVGIcon iconName={'arrowLeft'} size={40} color={'black'} />
           </DefaultButton>
-        </S.ItemContainer>
-        <S.ItemContainer>
-          <S.ItemList>
-            <span>현재 페이지: {current}</span>
-          </S.ItemList>
-        </S.ItemContainer>
-        <S.ItemContainer>
+          <span>현재 페이지: {current}</span>
           <DefaultButton
             size={'medium'}
             variant={'transparent'}
@@ -42,7 +35,7 @@ export const PostListNav = ({ current, max, handler }: PostListNavProps) => {
             disabled={nextButtonDisabled}>
             <SVGIcon iconName={'arrowRight'} size={40} color={'black'} />
           </DefaultButton>
-        </S.ItemContainer>
+        </S.ItemList>
       </S.NavBody>
     </S.Root>
   );

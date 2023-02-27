@@ -1,20 +1,23 @@
-import { FlexBoxCreator } from '@/components/layout/FlexBox';
+import { Flex } from '@/components/layout/FlexBox';
 import styled from '@emotion/styled';
 
-export const Root = styled(FlexBoxCreator.createDefaultFlexBox('div'))`
+export const Root = styled('section')`
   height: 80px;
+  width: 1080px;
 `;
-export const NavBody = styled(FlexBoxCreator.rowStartFlexBox('div'))`
+
+//rowStart
+export const NavBody = styled(Flex)`
   width: 100%;
   height: 100%;
 `;
-
-export const ItemContainer = styled(FlexBoxCreator.createDefaultFlexBox('div'))`
+//columnCenter
+export const ItemContainer = styled(Flex)`
   width: 100%;
   height: 100%;
 `;
-
-export const ItemList = styled(FlexBoxCreator.rowFlexBox('ul'))`
+//rowCenter
+export const ItemList = styled(Flex)`
   width: 100%;
   height: 100%;
 `;
