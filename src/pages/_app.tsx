@@ -1,3 +1,4 @@
+// next.js default set
 import type { AppProps } from 'next/app';
 import { Bootstrap } from '@/components/Bootstrap';
 
