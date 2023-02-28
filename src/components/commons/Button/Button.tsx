@@ -9,7 +9,7 @@ export type ButtonProps = {
 
 export const DefaultButton = ({ size, variant, children, ...props }: ButtonProps) => {
   return (
-    <S.Button size={size} variant={variant} {...props}>
+    <S.Button flex="columnCenter" size={size} variant={variant} {...props}>
       {children}
     </S.Button>
   );
