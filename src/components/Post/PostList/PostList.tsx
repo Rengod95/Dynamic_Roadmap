@@ -1,26 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { usePosts, getPostAsync, PostResponse } from '.';
+import { PostResponse, useInfinitePosts } from '.';
 import * as S from './PostList.css';
-import { DefaultButton } from '@/components/commons/Button';
-import { SVGIcon } from '@/components/commons/Icon';
 
-export type PostListProps = {
-  data: PostResponse | undefined;
-};
+export type PostListProps = {};
 
-export const PostList = ({ data }: PostListProps) => {
+export const PostList = () => {
+  const query = useInfinitePosts();
+
   return (
     <S.Root>
       <S.PostItemList>
-        {data?.posts.map((post) => {
-          return (
-            <div key={post.id}>
-              {post.id}
-              <h1>{post.title}</h1>
-              <span>{post.body}</span>
-            </div>
-          );
-        })}
+        {query.isLoading ? (
+          <div>is loading...</div>
+        ) : query.isError ? (
+          <div>error was caught!</div>
+        ) : (
+          query.data.pages.map((page) => {
+            return page.posts.map((page) => {
+              return (
+                <div key={page.id}>
+                  <h2>{page.id}</h2>
+                  <h3>{page.title}</h3>
+                  <div>{page.body}</div>
+                </div>
+              );
+            });
+          })
+        )}
       </S.PostItemList>
     </S.Root>
   );

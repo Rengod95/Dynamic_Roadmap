@@ -8,7 +8,7 @@ export const Root = styled(FlexBoxCreator.columnStartFlexBox('section'))`
 
 export const PostItemList = styled(FlexBoxCreator.columnStartFlexBox('ul'))`
   width: 100%;
-  height: 100%;
+  height: auto;
   justify-content: space-between;
 `;
 

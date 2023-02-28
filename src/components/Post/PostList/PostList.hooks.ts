@@ -1,46 +1,44 @@
-import { useQuery } from '@tanstack/react-query';
-import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useState } from 'react';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import qs from 'qs';
 
-export const GET_POST_QUERY_KEY = 'post-2';
+export const GET_POST_QUERY_KEY = 'post';
 export const POSTS_ENDPOINT = 'https://dummyjson.com/posts';
 export const DEFAULT_POST_ITEM_LIMIT = 10;
 export const DEFAULT_POST_ITEM_SKIP = 10;
+export const FIRST_PAGE_PARAM = 1;
 
 export type Post = { id: number; body: string; title: string };
-export type PostResponse = { posts: Post[]; total: number; limit: number; skip: number };
-
-export const getPostAsync = async (pageParam: number = 1): Promise<PostResponse> => {
-  const skipCount = (pageParam - 1) * DEFAULT_POST_ITEM_SKIP;
-  const limitCount = pageParam * DEFAULT_POST_ITEM_LIMIT;
-  return await fetch(`${POSTS_ENDPOINT}?skip=${skipCount}&limit=${DEFAULT_POST_ITEM_LIMIT}`).then(
-    (res) => res.json()
-  );
+export type PostResponse = {
+  posts: Post[];
+  total: number;
+  limit: number;
+  skip: number;
+  pageParam: number;
 };
 
-export const usePosts = () => {
-  const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
+export const getInfinitePost = async (pageParam: number): Promise<PostResponse> => {
+  const skipCount = (pageParam - 1) * DEFAULT_POST_ITEM_SKIP;
 
-  const { data, error, status } = useQuery<PostResponse, Error>(
-    [GET_POST_QUERY_KEY, currentPageNumber],
-    () => getPostAsync(currentPageNumber)
-  );
-  const maxPageNumber: number = data ? data.total / DEFAULT_POST_ITEM_LIMIT : 0;
+  const queryString = qs.stringify({
+    skip: skipCount,
+    limit: DEFAULT_POST_ITEM_LIMIT,
+  });
 
-  const callNextPage = useCallback(() => {
-    setCurrentPageNumber((currentPageNumber) => currentPageNumber + 1);
-  }, []);
+  const data = await fetch(`${POSTS_ENDPOINT}?${queryString}`).then((res) => res.json());
 
-  const callPreviousPage = useCallback(() => {
-    setCurrentPageNumber((currentPageNumber) => currentPageNumber - 1);
-  }, []);
+  return { ...data, pageParam };
+};
 
-  return {
-    data,
-    status,
-    error,
-    callNextPage,
-    callPreviousPage,
-    currentPageNumber,
-    maxPageNumber,
-  };
+export const useInfinitePosts = () => {
+  const query = useInfiniteQuery<PostResponse, Error>({
+    queryKey: [GET_POST_QUERY_KEY],
+    queryFn: ({ pageParam = 1 }) => getInfinitePost(pageParam),
+    getNextPageParam: (last) => {
+      return last?.pageParam < last?.total / DEFAULT_POST_ITEM_LIMIT
+        ? last.pageParam + 1
+        : undefined;
+    },
+  });
+
+  return query;
 };

@@ -1,49 +1,37 @@
-import React, { useEffect, useState } from 'react';
 import * as S from './PostListNav.css';
 import { SVGIcon } from '@/components/commons/Icon';
 import { DefaultButton } from '@/components/commons/Button';
-import { usePostListNav } from './PostListNav.hooks';
+import { useInfinitePosts } from '../PostList/PostList.hooks';
+import { ReactNode, useEffect, useState } from 'react';
 
-type PostListNavProps = {
-  current: number;
-  max: number;
-  handler: {
-    callPreviousPage: () => void;
-    callNextPage: () => void;
-  };
-  [k: string]: any;
-};
+type PostListNavProps = {};
 
-export const PostListNav = ({ current, max, handler }: PostListNavProps) => {
-  const { prevButtonDisabled, nextButtonDisabled } = usePostListNav(current, max);
+export const PostListNav = ({}: PostListNavProps) => {
+  const query = useInfinitePosts();
 
   return (
     <S.Root>
-      <S.NavBody>
-        <S.ItemContainer>
-          <DefaultButton
-            size={'medium'}
-            variant={'transparent'}
-            onClick={handler.callPreviousPage}
-            disabled={prevButtonDisabled}>
-            <SVGIcon iconName={'arrowLeft'} size={40} color={'black'} />
-          </DefaultButton>
-        </S.ItemContainer>
-        <S.ItemContainer>
-          <S.ItemList>
-            <span>현재 페이지: {current}</span>
-          </S.ItemList>
-        </S.ItemContainer>
-        <S.ItemContainer>
-          <DefaultButton
-            size={'medium'}
-            variant={'transparent'}
-            onClick={handler.callNextPage}
-            disabled={nextButtonDisabled}>
-            <SVGIcon iconName={'arrowRight'} size={40} color={'black'} />
-          </DefaultButton>
-        </S.ItemContainer>
-      </S.NavBody>
+      <S.Body>
+        <DefaultButton
+          size={'medium'}
+          variant={'default'}
+          disabled={!query.hasPreviousPage || query.isFetchingPreviousPage}
+          onClick={() => query.fetchPreviousPage()}>
+          <SVGIcon iconName={'arrowLeft'} size={40} color={'black'} />
+        </DefaultButton>
+        <span>
+          {query.data?.pageParams.map((page) => (
+            <span key={page as number}>{page as ReactNode}</span>
+          ))}
+        </span>
+        <DefaultButton
+          size={'medium'}
+          variant={'default'}
+          disabled={!query.hasNextPage || query.isFetchingNextPage}
+          onClick={() => query.fetchNextPage()}>
+          <SVGIcon iconName={'arrowRight'} size={40} color={'black'} />
+        </DefaultButton>
+      </S.Body>
     </S.Root>
   );
 };
