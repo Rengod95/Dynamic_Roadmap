@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, NavItemList, NavListItem, Root, StyledLink } from './Header.css';
+import * as S from './Header.css';
 
 export type NavItemData = {
   title: string;
@@ -14,16 +14,16 @@ export const NAV_ITEM_DATAS: Array<NavItemData> = [
 
 export const Header = () => {
   return (
-    <Root>
-      <Nav>
-        <NavItemList>
+    <S.Root>
+      <S.Body>
+        <S.HeaderItemList>
           {NAV_ITEM_DATAS.map((item: NavItemData) => (
-            <NavListItem key={item.url}>
-              <StyledLink href={item.url}>{item.title}</StyledLink>
-            </NavListItem>
+            <S.NavListItem key={item.url}>
+              <S.RouterLink href={item.url}>{item.title}</S.RouterLink>
+            </S.NavListItem>
           ))}
-        </NavItemList>
-      </Nav>
-    </Root>
+        </S.HeaderItemList>
+      </S.Body>
+    </S.Root>
   );
 };

@@ -15,7 +15,7 @@ export const Root = styled.header`
   top: 0;
 `;
 
-export const Nav = styled.nav`
+export const Body = styled.nav`
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 1fr;
@@ -24,7 +24,7 @@ export const Nav = styled.nav`
   margin: 0 auto;
 `;
 
-export const NavItemList = styled(FlexBoxCreator.createDefaultFlexBox('ul'))`
+export const HeaderItemList = styled(FlexBoxCreator.createDefaultFlexBox('ul'))`
   justify-content: flex-end;
   height: 100%;
 `;
@@ -40,7 +40,7 @@ export const NavListItem: StyledComponent<FlexListItemProps> = styled(FlexListIt
   }
 `;
 
-export const StyledLink = styled(FlexBoxCreator.createDefaultFlexBox(Link))`
+export const RouterLink = styled(FlexBoxCreator.createDefaultFlexBox(Link))`
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
